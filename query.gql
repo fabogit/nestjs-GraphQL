@@ -1,0 +1,42 @@
+# Start server and go on http://localhost:3000/graphql
+
+mutation {
+  createUser(createUserData: { email: "mail@email.com", age: 33 }) {
+    userId
+    email
+    age
+    isSubscribed
+  }
+}
+
+query {
+  user(userId: "USER_UUID_GOES_HERE") {
+    userId
+    email
+    age
+    isSubscribed
+  }
+}
+
+query {
+  users(userIds: ["USER_UUID_GOES_HERE", "..."]) {
+    userId
+    email
+    isSubscribed
+  }
+}
+
+mutation {
+  updateUser(
+    updateUserData: { userId: "USER_UUID_GOES_HERE", isSubscribed: true }
+  ) {
+    userId
+    isSubscribed
+  }
+}
+
+mutation {
+  deleteUser(deleteUserData: { userId: "USER_UUID_GOES_HERE" }) {
+    userId
+  }
+}
